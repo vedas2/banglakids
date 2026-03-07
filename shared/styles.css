@@ -1,0 +1,205 @@
+/* =============================================
+   BanglaKids — Shared Game Styles
+   ============================================= */
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* --- Game Container --- */
+.game-container {
+    width: 90%;
+    max-width: 400px;
+    height: 650px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Back Button --- */
+.btn-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #ccc;
+    z-index: 20;
+    text-decoration: none;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.btn-back:hover { color: #888; }
+
+/* --- Progress Bar --- */
+.progress-bar { height: 6px; background: #eee; width: 100%; }
+.progress-fill { height: 100%; background: #4ecdc4; width: 0%; transition: width 0.5s; }
+
+.level-indicator {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- Nav Dots --- */
+.nav-dots {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    z-index: 10;
+}
+.dot { width: 10px; height: 10px; background: #e0e0e0; border-radius: 50%; transition: all 0.3s; }
+.dot.active { background: #ff6b6b; transform: scale(1.3); }
+
+/* --- Buttons --- */
+.btn-main {
+    margin-top: auto;
+    margin-bottom: 70px;
+    padding: 14px 0;
+    font-size: 1.3rem;
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 85%;
+    align-self: center;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #3db9b0;
+    transition: transform 0.1s, box-shadow 0.1s;
+    z-index: 5;
+}
+.btn-main:active { transform: translateY(4px); box-shadow: none; }
+
+.btn-secondary {
+    background: #ff6b6b;
+    padding: 8px 20px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #e55a5a;
+}
+
+/* --- Screens --- */
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    animation: slideIn 0.4s ease-out;
+    width: 100%;
+    box-sizing: border-box;
+}
+.screen.active { display: flex; }
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Screen 1: See --- */
+.big-letter {
+    font-size: 11rem;
+    color: #ff6b6b;
+    cursor: pointer;
+    text-shadow: 2px 2px 0px #eee;
+}
+.bouncing { animation: bounce 2s infinite; }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* --- Screen 2: Read --- */
+.word-card {
+    background: #fff9c4;
+    padding: 30px;
+    border-radius: 20px;
+    border-bottom: 6px solid #fbc02d;
+    width: 80%;
+}
+.emoji-img { font-size: 6rem; display: block; margin-bottom: 15px; }
+.word-text { font-size: 3rem; color: #333; font-weight: bold; }
+.highlight { color: #ff6b6b; }
+.sub-text { color: #777; font-size: 1.1rem; margin-top: 5px; }
+
+/* --- Screen 3: Trace --- */
+.canvas-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border: 3px dashed #bbb;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+}
+.trace-guide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 10rem;
+    color: #e0e0e0;
+    pointer-events: none;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+/* --- Screen 4: Reward --- */
+.star-container { font-size: 5rem; margin-bottom: 20px; }
+.star {
+    display: inline-block;
+    animation: pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    transform: scale(0);
+}
+.star:nth-child(1) { animation-delay: 0.1s; color: gold; }
+.star:nth-child(2) { animation-delay: 0.3s; color: orange; font-size: 7rem; }
+.star:nth-child(3) { animation-delay: 0.5s; color: gold; }
+
+@keyframes pop {
+    to { opacity: 1; transform: scale(1); }
+}
+
+.reward-text { font-size: 3rem; color: #4ecdc4; font-weight: bold; margin-bottom: 10px; }
+
+/* --- Confetti --- */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    animation: fall linear forwards;
+}
+@keyframes fall { to { transform: translateY(700px) rotate(720deg); } }
