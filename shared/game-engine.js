@@ -23,8 +23,35 @@ function loadLetterData(index) {
     document.getElementById('wordMeaning').innerText = data.meaning;
     document.getElementById('traceLetter').innerText = data.char;
 
+    // Add green starting dot for tracing
+    addStartingDot(data);
+
     updateProgress(0);
     document.getElementById('dotsNav').style.display = 'flex';
+}
+
+function addStartingDot(data) {
+    // Remove existing dot if any
+    const existingDot = document.getElementById('startingDot');
+    if (existingDot) existingDot.remove();
+
+    // Create green starting dot
+    const dot = document.createElement('div');
+    dot.id = 'startingDot';
+    dot.style.position = 'absolute';
+    dot.style.width = '12px';
+    dot.style.height = '12px';
+    dot.style.backgroundColor = '#4CAF50';
+    dot.style.borderRadius = '50%';
+    dot.style.zIndex = '10';
+    dot.style.pointerEvents = 'none';
+
+    // Position the dot based on the letter data
+    dot.style.top = data.startDotTop;
+    dot.style.left = data.startDotLeft;
+
+    // Add to canvas wrapper
+    document.querySelector('.canvas-wrapper').appendChild(dot);
 }
 
 function goToStep(stepNum) {
@@ -137,7 +164,12 @@ canvas.addEventListener('touchstart', startPosition);
 canvas.addEventListener('touchend', finishedPosition);
 canvas.addEventListener('touchmove', draw);
 
-function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+function clearCanvas() { 
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    // Re-add the starting dot
+    const data = window.LETTERS[currentLetterIndex];
+    addStartingDot(data);
+}
 
 /* --- Init --- */
 loadLetterData(0);
