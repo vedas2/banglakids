@@ -23,6 +23,9 @@ function loadLetterData(index) {
     document.getElementById('wordMeaning').innerText = data.meaning;
     document.getElementById('traceLetter').innerText = data.char;
 
+    const hintImg = document.getElementById('traceHintImg');
+    if (hintImg && data.traceImage) hintImg.src = data.traceImage;
+
     // Add green starting dot for tracing
     addStartingDot(data);
 
@@ -64,12 +67,20 @@ function goToStep(stepNum) {
     if (stepNum === 1) updateProgress(10);
     if (stepNum === 2) updateProgress(50);
     if (stepNum === 3) updateProgress(80);
+
+    const hintPanel = document.getElementById('traceHintPanel');
+    if (hintPanel) {
+        hintPanel.classList.toggle('visible', stepNum === 3);
+    }
 }
 
 function showReward() {
     document.getElementById('dotsNav').style.display = 'none';
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('sReward').classList.add('active');
+
+    const hintPanel = document.getElementById('traceHintPanel');
+    if (hintPanel) hintPanel.classList.remove('visible');
 
     updateProgress(100);
     createConfetti();

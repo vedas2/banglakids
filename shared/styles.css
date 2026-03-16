@@ -18,8 +18,7 @@ body {
 
 /* --- Game Container --- */
 .game-container {
-    width: 90%;
-    max-width: 400px;
+    width: min(90vw, 400px);
     height: 650px;
     background: white;
     border-radius: 25px;
@@ -203,3 +202,40 @@ canvas {
     animation: fall linear forwards;
 }
 @keyframes fall { to { transform: translateY(700px) rotate(720deg); } }
+
+/* --- Page Wrapper (game + side panel) --- */
+.page-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- Trace Hint Side Panel --- */
+.trace-hint-panel {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 20px;
+    transform: translateY(-60px);
+}
+.trace-hint-panel.visible { display: flex; }
+
+.trace-hint-label {
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+.trace-hint-img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    border-radius: 15px;
+    border: 3px dashed #bbb;
+}

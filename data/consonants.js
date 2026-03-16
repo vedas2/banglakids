@@ -1,7 +1,7 @@
 /* Bangla Consonants — ব্যঞ্জনবর্ণ (30 letters)
    Note: ঙ, ণ rarely start words — highlighted mid-word instead */
 window.LETTERS = [
-    { char: "ক", soundText: "Ko",   word: "কলা",    highlightIndex: 0, meaning: "Kola (Banana)",      emoji: "🍌", startDotTop: "15%", startDotLeft: "45%" },
+    { char: "ক", soundText: "Ko",   word: "কলা",    highlightIndex: 0, meaning: "Kola (Banana)",      emoji: "🍌", startDotTop: "15%", startDotLeft: "45%", traceImage: "../images/ko.svg" },
     { char: "খ", soundText: "Kho",  word: "খরগোশ",  highlightIndex: 0, meaning: "Khorgo (Rabbit)",    emoji: "🐇", startDotTop: "15%", startDotLeft: "45%" },
     { char: "গ", soundText: "Go",   word: "গরু",    highlightIndex: 0, meaning: "Goru (Cow)",          emoji: "🐄", startDotTop: "15%", startDotLeft: "45%" },
     { char: "ঘ", soundText: "Gho",  word: "ঘোড়া",  highlightIndex: 0, meaning: "Ghora (Horse)",       emoji: "🐴", startDotTop: "15%", startDotLeft: "45%" },
