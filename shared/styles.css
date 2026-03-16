@@ -239,3 +239,51 @@ canvas {
     border-radius: 15px;
     border: 3px dashed #bbb;
 }
+
+/* --- Multi-word Flashcard Grid --- */
+.words-grid {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    width: 100%;
+}
+.mini-word-card {
+    background: #fff9c4;
+    padding: 15px 5px;
+    border-radius: 15px;
+    border-bottom: 4px solid #fbc02d;
+    width: 45%;
+    text-align: center;
+}
+.mini-emoji { font-size: 3.5rem; margin-bottom: 5px; }
+.mini-word-text { font-size: 1.6rem; font-weight: bold; color: #333; }
+.mini-sub-text { color: #777; font-size: 0.9rem; margin-top: 5px; line-height: 1.2; }
+
+/* --- Quiz Styles --- */
+.quiz-header {
+    font-size: 1.5rem;
+    color: #4ecdc4;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.quiz-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.quiz-option {
+    font-size: 2.5rem;
+    padding: 15px 25px;
+    background: #e0f7fa;
+    border-radius: 15px;
+    border: 4px solid #4ecdc4;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+.quiz-option:active { transform: scale(0.9); }
+.quiz-option.correct { background: #4CAF50; color: white; border-color: #388E3C; }
+.quiz-option.wrong { background: #F44336; color: white; border-color: #D32F2F; }

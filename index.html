@@ -71,6 +71,9 @@
 
         .game-card.vowels     { border-bottom-color: #ff6b6b; }
         .game-card.consonants { border-bottom-color: #4ecdc4; }
+        .game-card.words      { border-bottom-color: #ab47bc; }
+        .game-card.words2     { border-bottom-color: #ff9800; }
+        .game-card.words3     { border-bottom-color: #ec407a; }
 
         .card-letter {
             font-size: 3.8rem;
@@ -84,6 +87,9 @@
         }
         .vowels     .card-letter { background: #fff0f0; }
         .consonants .card-letter { background: #f0fffe; }
+        .words      .card-letter { background: #f3e5f5; }
+        .words2     .card-letter { background: #fff3e0; }
+        .words3     .card-letter { background: #fce4ec; }
 
         .card-info { flex: 1; }
 
@@ -109,6 +115,9 @@
         }
         .vowels     .card-badge { background: #fff0f0; color: #ff6b6b; }
         .consonants .card-badge { background: #f0fffe; color: #4ecdc4; }
+        .words      .card-badge { background: #f3e5f5; color: #ab47bc; }
+        .words2     .card-badge { background: #fff3e0; color: #ff9800; }
+        .words3     .card-badge { background: #fce4ec; color: #ec407a; }
 
         .card-arrow { font-size: 1.4rem; color: #ddd; }
 
@@ -119,6 +128,23 @@
             color: #bbb;
             font-size: 0.85rem;
         }
+
+    /* --- Row Grid for Sub-modules --- */
+    .row-grid { display: flex; gap: 18px; }
+    .row-grid .game-card {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+        padding: 22px 10px;
+        gap: 12px;
+    }
+    .row-grid .card-letter {
+        width: 65px; height: 65px; font-size: 1.8rem;
+    }
+    .row-grid .card-title { font-size: 1.3rem; }
+    .row-grid .card-title-en { font-size: 0.8rem; }
+    .row-grid .card-badge { margin-top: 6px; }
+    .row-grid .card-arrow { display: none; }
     </style>
 </head>
 <body>
@@ -150,6 +176,39 @@
             </div>
             <div class="card-arrow">➜</div>
         </a>
+
+        <div class="row-grid">
+            <a href="games/group1-game.html" class="game-card words">
+                <div class="card-letter">ক-ঙ</div>
+                <div class="card-info">
+                    <div class="card-title">শব্দ ১</div>
+                    <div class="card-title-en">Group 1 Words</div>
+                    <div class="card-badge">15 Words</div>
+                </div>
+            </a>
+
+            <a href="games/group2-game.html" class="game-card words2">
+                <div class="card-letter">চ-ঞ</div>
+                <div class="card-info">
+                    <div class="card-title">শব্দ ২</div>
+                    <div class="card-title-en">Group 2 Words</div>
+                    <div class="card-badge">15 Words</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row-grid">
+            <a href="games/group3-game.html" class="game-card words3">
+                <div class="card-letter">ট-ণ</div>
+                <div class="card-info">
+                    <div class="card-title">শব্দ ৩</div>
+                    <div class="card-title-en">Group 3 Words</div>
+                    <div class="card-badge">15 Words</div>
+                </div>
+            </a>
+            <!-- Placeholder to keep the grid aligned -->
+            <div class="game-card" style="visibility: hidden;"></div>
+        </div>
     </div>
 
     <div class="footer">Tap a card to start!</div>
