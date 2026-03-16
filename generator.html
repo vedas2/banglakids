@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Generator</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; background: #f4f4f9;}
+        canvas { border: 2px dashed #ccc; cursor: crosshair; margin-top: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .controls { margin-bottom: 20px; }
+        button { padding: 10px 18px; margin: 0 5px; cursor: pointer; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; background: white;}
+        input { font-size: 20px; text-align: center; padding: 5px; border-radius: 5px; border: 1px solid #ccc;}
+    </style>
+</head>
+<body>
+
+<div class="controls">
+    <input type="text" id="letterInput" value="ক" maxlength="1" size="3">
+    <button onclick="drawLetter()">1. Load Letter</button>
+    <button onclick="drawLetter()">2. Erase Red Lines</button>
+    <button onclick="downloadPNG()" style="background-color: #4CAF50; color: white; border: none;">3. Download PNG</button>
+</div>
+
+<div style="color: #666; font-size: 15px;">Use your mouse to draw the red tracing arrows/numbers over the letter.</div>
+
+<canvas id="c" width="280" height="280"></canvas>
+
+<script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    let painting = false;
+
+    function drawLetter() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Solid white background 
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the gray letter
+        ctx.fillStyle = "#e0e0e0";
+        ctx.font = "bold 160px sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(document.getElementById('letterInput').value, 140, 155); 
+    }
+
+    function downloadPNG() {
+        const link = document.createElement('a');
+        // Names the file after the letter automatically
+        link.download = document.getElementById('letterInput').value + '_trace.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+
+    // --- Freehand Red Drawing Logic ---
+    ctx.strokeStyle = "#ff0000";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    canvas.addEventListener('mousedown', (e) => { 
+        painting = true; 
+        ctx.beginPath(); 
+        ctx.moveTo(e.offsetX, e.offsetY); 
+    });
+    canvas.addEventListener('mouseup', () => { painting = false; });
+    canvas.addEventListener('mousemove', (e) => { 
+        if(painting) { 
+            ctx.lineTo(e.offsetX, e.offsetY); 
+            ctx.stroke(); 
+        } 
+    });
+
+    // Draw the initial letter on load
+    window.onload = drawLetter;
+</script>
+
+</body>
+</html>
