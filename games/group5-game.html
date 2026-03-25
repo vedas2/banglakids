@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BanglaKids - Consonant Group 5</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+    <div class="game-container" id="gameBox">
+        <!-- Back to home navigation -->
+        <a href="../index.html" class="btn-back">✖</a>
+
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="level-indicator" id="levelIndicator">Group 5: প, ফ, ব, ভ, ম</div>
+
+        <!-- Main Game Canvas Content -->
+        <div id="gameContent" class="screen active" style="justify-content: flex-start; padding-top: 20px; overflow-y: auto;">
+        </div>
+
+        <button class="btn-main" id="nextBtn" onclick="nextStep()" style="display: none;">Next ➜</button>
+    </div>
+    <script src="group5-game.js"></script>
+    <script src="../shared/word-game-engine.js"></script>
+</body>
+</html>
